@@ -1,0 +1,22 @@
+<!--pages/post/post.wxml-->
+<!-- 设置宽高设置在swiper组件上，swiper-item自动设置为宽高100% -->
+<import src="post-item/post-item-template.wxml" />
+<view>
+	<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="2000" catchtap="onSwiperTap">
+		<swiper-item>
+			<image src="/images/wx.png" class="swiper-img" data-postId="2" ></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="/images/vr.png" class="swiper-img" data-postId="4" ></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="/images/iqiyi.png" class="swiper-img" data-postId="5" ></image>
+		</swiper-item>
+	</swiper>
+	<block wx:for="{{postsData}}" wx:for-item="item">
+		<view catchtap="onPostTap" data-postId="{{item.postId}}" data-post-Id="{{item.postId}}" >
+			<template is="postItem" data="{{item}}"></template>
+		</view>
+	</block>
+
+</view>
