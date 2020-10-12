@@ -59,12 +59,21 @@ Page({
       movies:totalMovie
     })
     this.data.totalCount+=20;
+    wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
    
    
   },
-  onScrollLower:function(evnet){
+  onReachBottom:function(evnet){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
-    util.getMovie(nextUrl,this.processDoubanData)
+    util.getMovie(nextUrl,this.processDoubanData);
+    wx.showNavigationBarLoading();
+  },
+  onPullDownRefresh:function(event){
+    var refeshUrl = this.data.requestUrl + "?start=0&count=20";
+   this.data.movies = [];
+    util.getMovie(refeshUrl,this.processDoubanData);
+    wx.showNavigationBarLoading()
   },
 
   /**
@@ -75,6 +84,7 @@ Page({
       title: this.data.navigateTitle
     })
   }
+  
 
 
 })

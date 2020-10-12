@@ -7,7 +7,8 @@
     "pages/movies/more-movie/more-movie"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#405f80"
+    "navigationBarBackgroundColor": "#405f80",
+    "enablePullDownRefresh": true
   },
   "sitemapLocation": "sitemap15.json",
   "tabBar": {
